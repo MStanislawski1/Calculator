@@ -4,8 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
+
+import static javafx.stage.StageStyle.TRANSPARENT;
 
 public class Main extends Application {
     @Override
@@ -15,6 +18,7 @@ public class Main extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+
 
     }
 

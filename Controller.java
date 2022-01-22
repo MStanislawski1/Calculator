@@ -29,34 +29,34 @@ public class Controller {
     }
 
     public void buttonClicked0(ActionEvent e){
-        System.out.println("dupa 0");
+        System.out.println("0");
     }
     public void buttonClicked1(ActionEvent e){
-        System.out.println("dupa1");
+        System.out.println("1");
     }
     public void buttonClicked2(ActionEvent e){
-        System.out.println("dupa2");
+        System.out.println("2");
     }
     public void buttonClicked3(ActionEvent e){
-        System.out.println("dupa3");
+        System.out.println("3");
     }
     public void buttonClicked4(ActionEvent e){
-        System.out.println("dupa4");
+        System.out.println("4");
     }
     public void buttonClicked5(ActionEvent e){
-        System.out.println("dupa5");
+        System.out.println("5");
     }
     public void buttonClicked6(ActionEvent e){
-        System.out.println("dupa6");
+        System.out.println("6");
     }
     public void buttonClicked7(ActionEvent e){
-        System.out.println("dupa7");
+        System.out.println("7");
     }
     public void buttonClicked8(ActionEvent e){
-        System.out.println("dupa8");
+        System.out.println("8");
     }
     public void buttonClicked9(ActionEvent e){
-        System.out.println("dupa9");
+        System.out.println("9");
     }
 
 }

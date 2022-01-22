@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane fx:id="DolnaPlansza" prefHeight="380.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane fx:id="Wyswietlacz">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextArea fx:id="Display" prefHeight="200.0" prefWidth="200.0" text="dupa0" />
+            <TextArea fx:id="historyTXT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" text="dupa1" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <GridPane fx:id="PodWyswietlacz" prefHeight="97.0" prefWidth="286.0" GridPane.rowIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane fx:id="Klawiatura">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="Button5" mnemonicParsing="false" onAction="#buttonClicked5" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="Button9" mnemonicParsing="false" onAction="#buttonClicked9" text="9" GridPane.columnIndex="2" />
+                  <Button fx:id="Button8" mnemonicParsing="false" onAction="#buttonClicked8" text="8" GridPane.columnIndex="1" />
+                  <Button fx:id="Button7" mnemonicParsing="false" onAction="#buttonClicked7" text="7" />
+                  <Button fx:id="Button4" mnemonicParsing="false" onAction="#buttonClicked4" text="4" GridPane.rowIndex="1" />
+                  <Button fx:id="Button1" mnemonicParsing="false" onAction="#buttonClicked1" text="1" GridPane.rowIndex="2" />
+                  <Button fx:id="Button2" mnemonicParsing="false" onAction="#buttonClicked2" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="Button6" mnemonicParsing="false" onAction="#buttonClicked6" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button fx:id="Button3" mnemonicParsing="false" onAction="#buttonClicked3" text="3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button fx:id="Button0" mnemonicParsing="false" onAction="#buttonClicked0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button fx:id="ExitButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exitButton" text="Exit" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin></Button>
+         </children>
+      </GridPane>
+   </children>
+</GridPane>

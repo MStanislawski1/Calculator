@@ -1,3 +1,3 @@
 # Program jest implementacją kalkulatora, napisaną w języku Java
 > Funkcjonalności programu:
-> * dupa1
+> * Funkcja 1

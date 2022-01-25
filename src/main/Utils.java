@@ -1,8 +1,12 @@
 package main;
 
 import javafx.scene.control.Button;
+import javafx.util.Pair;
 
-public class Util {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Utils {
 
     public static boolean isOperator(String character) {
         return character.equals("-") || character.equals("+") || character.equals("*") || character.equals("/");
@@ -33,5 +37,19 @@ public class Util {
 
     public static boolean replaceOperator(String result) {
         return result.length() >= 1 && isOperator(result.substring(result.length() - 1));
+    }
+
+    public static Pair<List<Double>, List<String>> getNumbersForCalculations(String calculations) {
+
+        /* TODO
+            Przykładowa funkcja, operacje są typu String, ale możesz utworzyć Enum
+            Wydzielić cyfry i znaki specjalnie możesz np przy pomocy funkcji split() z klasy String
+            Uważaj tylko na pierwszy znak bo jeżeli to będzie minus to trzeba go dopisać do pierwszej cyfry, a nie do listy z operacjami
+        */
+
+        List<Double> numbers = new ArrayList<>();
+        List<String> operations = new ArrayList<>();
+
+        return new Pair<>(numbers, operations);
     }
 }

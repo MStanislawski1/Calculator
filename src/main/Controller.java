@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import static main.Util.*;
+import static main.Utils.*;
 
 public class Controller extends Calculations {
 
@@ -84,7 +84,7 @@ public class Controller extends Calculations {
     }
 
     public void sevenButtonClick() {
-        if (Util.operatorBeforeZero(result))
+        if (Utils.operatorBeforeZero(result))
             result = result.substring(0, result.length() - 1) + "7";
         else if (result.equals("0"))
             result = "7";
@@ -94,7 +94,7 @@ public class Controller extends Calculations {
     }
 
     public void eightButtonClick() {
-        if (Util.operatorBeforeZero(result))
+        if (Utils.operatorBeforeZero(result))
             result = result.substring(0, result.length() - 1) + "8";
         else if (result.equals("0"))
             result = "8";
@@ -104,7 +104,7 @@ public class Controller extends Calculations {
     }
 
     public void nineButtonClick() {
-        if (Util.operatorBeforeZero(result))
+        if (Utils.operatorBeforeZero(result))
             result = result.substring(0, result.length() - 1) + "9";
         else if (result.equals("0"))
             result = "9";
@@ -114,7 +114,7 @@ public class Controller extends Calculations {
     }
 
     public void fourButtonClick() {
-        if (Util.operatorBeforeZero(result))
+        if (Utils.operatorBeforeZero(result))
             result = result.substring(0, result.length() - 1) + "4";
         else if (result.equals("0"))
             result = "4";
@@ -124,7 +124,7 @@ public class Controller extends Calculations {
     }
 
     public void fiveButtonClick() {
-        if (Util.operatorBeforeZero(result))
+        if (Utils.operatorBeforeZero(result))
             result = result.substring(0, result.length() - 1) + "5";
         else if (result.equals("0"))
             result = "5";
@@ -134,7 +134,7 @@ public class Controller extends Calculations {
     }
 
     public void sixButtonClick() {
-        if (Util.operatorBeforeZero(result))
+        if (Utils.operatorBeforeZero(result))
             result = result.substring(0, result.length() - 1) + "6";
         else if (result.equals("0"))
             result = "6";
@@ -144,7 +144,7 @@ public class Controller extends Calculations {
     }
 
     public void oneButtonClick() {
-        if (Util.operatorBeforeZero(result))
+        if (Utils.operatorBeforeZero(result))
             result = result.substring(0, result.length() - 1) + "1";
         else if (result.equals("0"))
             result = "1";
@@ -154,7 +154,7 @@ public class Controller extends Calculations {
     }
 
     public void twoButtonClick() {
-        if (Util.operatorBeforeZero(result))
+        if (Utils.operatorBeforeZero(result))
             result = result.substring(0, result.length() - 1) + "2";
         else if (result.equals("0"))
             result = "2";
@@ -164,7 +164,7 @@ public class Controller extends Calculations {
     }
 
     public void threeButtonClick() {
-        if (Util.operatorBeforeZero(result))
+        if (Utils.operatorBeforeZero(result))
             result = result.substring(0, result.length() - 1) + "3";
         else if (result.equals("0"))
             result = "3";
@@ -175,7 +175,7 @@ public class Controller extends Calculations {
 
     public void separatorButtonClick() {
         if (!result.isBlank() && isNumber(result.substring(result.length() - 1))) {
-            result = result + ",";
+            result = result + ".";
             calculationScreen.setText(result);
         }
     }
@@ -231,6 +231,17 @@ public class Controller extends Calculations {
             result = "";
 
         if (!result.contains("/0")) {
+
+           /* TODO
+               Jeżeli mamy poprawne dane to wywołamy tutaj funkcję z klasy Util (do napisania), która zamieni String z wynikiem na dwie listy:
+               jedna z cyframi typu double, druga z operacjami (może być typu String, albo ładniej byłoby utworzyć osobną klasę typu Enum,
+               gdzie znajdą się możliwe do wykonania operacje matematyczne)
+               Pair data = getNumbersForCalculations(result);
+               później wywołamy funkcję z klasy Calculations (do napisania), która pobierze te dwie listy
+               i na ich podstawie wyliczy wynik, który przypiszemy do zmiennej finalResult i wyświetlimy
+               finalResult = getResult(data);
+            */
+
             calculationScreen.setText(result + finalResult);
             resultScreen.setText(String.valueOf(finalResult));
         } else {

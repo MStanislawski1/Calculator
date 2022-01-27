@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.util.Pair;
 
 import static main.Utils.*;
 
@@ -73,14 +74,12 @@ public class Controller extends Calculations {
     private double finalResult = 0;
 
     public void zeroButtonClick() {
-        if ((result.length() >= 2 && result.endsWith("0") && !isOperator(result.substring(result.length() - 2)))
-                || result.length() == 0
-                || (!result.isBlank() && isNumber(result.substring(result.length() - 1)))
-                || (!result.isBlank() && result.endsWith(","))
-                || (!result.isBlank() && isOperator(result.substring(result.length() - 1)))) {
-            result = result + "0";
-            calculationScreen.setText(result);
-        }
+        if (Utils.operatorBeforeZero(result))
+            result = result.substring(0, result.length() - 1) + "0";
+        else if (result.equals("0"))
+            result = "0";
+        else result = result + "0";
+        calculationScreen.setText(result);
     }
 
     public void sevenButtonClick() {
@@ -181,43 +180,37 @@ public class Controller extends Calculations {
     }
 
     public void multiplicationButtonClick() {
-        if (!result.isBlank() && isNumber(result.substring(result.length() - 1)))
+        if (!result.isBlank() && isNumber(result.substring(result.length() - 1)) && !result.endsWith("."))
             result = result + "*";
         else if (replaceOperator(result) && result.length() > 1)
             result = result.substring(0, result.length() - 1) + "*";
-        else
-            result = "";
 
         calculationScreen.setText(result);
     }
 
     public void divisionButtonClick() {
-        if (!result.isBlank() && isNumber(result.substring(result.length() - 1)))
+        if (!result.isBlank() && isNumber(result.substring(result.length() - 1)) && !result.endsWith("."))
             result = result + "/";
         else if (replaceOperator(result) && result.length() > 1)
             result = result.substring(0, result.length() - 1) + "/";
-        else
-            result = "";
 
         calculationScreen.setText(result);
     }
 
     public void plusButtonClick() {
-        if (!result.isBlank() && isNumber(result.substring(result.length() - 1)))
+        if (!result.isBlank() && isNumber(result.substring(result.length() - 1)) && !result.endsWith("."))
             result = result + "+";
         else if (replaceOperator(result) && result.length() > 1)
             result = result.substring(0, result.length() - 1) + "+";
-        else
-            result = "";
 
         calculationScreen.setText(result);
     }
 
     public void minusButtonClick() {
-        if (result.isBlank() || (!result.isBlank() && isNumber(result.substring(result.length() - 1))))
-            result = result + "-";
-        else if (replaceOperator(result))
+        if (result.endsWith("+") || result.endsWith("-"))
             result = result.substring(0, result.length() - 1) + "-";
+        else if (!result.endsWith("."))
+            result = result + "-";
 
         calculationScreen.setText(result);
     }
@@ -231,13 +224,10 @@ public class Controller extends Calculations {
             result = "";
 
         if (!result.contains("/0")) {
+            Pair data = getNumbersForCalculations(result);
 
            /* TODO
-               Jeżeli mamy poprawne dane to wywołamy tutaj funkcję z klasy Util (do napisania), która zamieni String z wynikiem na dwie listy:
-               jedna z cyframi typu double, druga z operacjami (może być typu String, albo ładniej byłoby utworzyć osobną klasę typu Enum,
-               gdzie znajdą się możliwe do wykonania operacje matematyczne)
-               Pair data = getNumbersForCalculations(result);
-               później wywołamy funkcję z klasy Calculations (do napisania), która pobierze te dwie listy
+               wywołamy funkcję z klasy Calculations (do napisania), która pobierze te dwie listy
                i na ich podstawie wyliczy wynik, który przypiszemy do zmiennej finalResult i wyświetlimy
                finalResult = getResult(data);
             */

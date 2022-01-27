@@ -278,34 +278,52 @@ public class Controller extends Calculations {
         changeClickable(true, seven, eight, nine, multiplication, four, five, six, division, one, two, three, plus, separator, zero, equals, minus);
     }
 
-    public String getValueOfResult(){
-        value=result;
+    public String getValueOfResult() {
+        value = result;
         return value;
     }
 
-    public void but(){
+    public void but() {
         List summaryValue = new ArrayList();
-        if (result.contains("+")){
-            String[] data=result.split("\\+");
-            for (int i=0; i<data.length;i++){
+        if (result.contains("+")) {
+            String[] data = result.split("\\+");
+            for (int i = 0; i < data.length; i++) {
                 summaryValue.add(data[i]);
-                System.out.println(data [i]);
+                System.out.println(data[i]);
             }
             summaryValue.add("+");
             System.out.println(summaryValue);
 
-        }
-        else if(result.contains("-")){
-            String[] data=result.split("-");
-            System.out.println(data);
-        }
-        else if(result.contains("*")){
-            String[] data=result.split("\\*");
-            System.out.println(data);
-        }
-        else if(result.contains("/")){
-            String[] data=result.split("/");
-            System.out.println(data);
+        } else if (result.contains("-")) {
+            if (result.contains("-")) {
+                String[] data = result.split("-");
+                for (int i = 0; i < data.length; i++) {
+                    summaryValue.add(data[i]);
+                    System.out.println(data[i]);
+                }
+                summaryValue.add("-");
+                System.out.println(summaryValue);
+            } else if (result.contains("*")) {
+                if (result.contains("*")) {
+                    String[] data = result.split("\\*");
+                    for (int i = 0; i < data.length; i++) {
+                        summaryValue.add(data[i]);
+                        System.out.println(data[i]);
+                    }
+                    summaryValue.add("*");
+                    System.out.println(summaryValue);
+                } else if (result.contains("/")) {
+                    if (result.contains("/")) {
+                        String[] data = result.split("/");
+                        for (int i = 0; i < data.length; i++) {
+                            summaryValue.add(data[i]);
+                            System.out.println(data[i]);
+                        }
+                        summaryValue.add("/");
+                        System.out.println(summaryValue);
+                    }
+                }
+            }
         }
     }
 }

@@ -5,6 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static main.Utils.*;
 
 public class Controller extends Calculations {
@@ -71,6 +74,8 @@ public class Controller extends Calculations {
 
     private String result = "";
     private double finalResult = 0;
+
+    String value;
 
     public void zeroButtonClick() {
         if ((result.length() >= 2 && result.endsWith("0") && !isOperator(result.substring(result.length() - 2)))
@@ -271,5 +276,36 @@ public class Controller extends Calculations {
         finalResult = 0.0;
         calculationScreen.setText("");
         changeClickable(true, seven, eight, nine, multiplication, four, five, six, division, one, two, three, plus, separator, zero, equals, minus);
+    }
+
+    public String getValueOfResult(){
+        value=result;
+        return value;
+    }
+
+    public void but(){
+        List summaryValue = new ArrayList();
+        if (result.contains("+")){
+            String[] data=result.split("\\+");
+            for (int i=0; i<data.length;i++){
+                summaryValue.add(data[i]);
+                System.out.println(data [i]);
+            }
+            summaryValue.add("+");
+            System.out.println(summaryValue);
+
+        }
+        else if(result.contains("-")){
+            String[] data=result.split("-");
+            System.out.println(data);
+        }
+        else if(result.contains("*")){
+            String[] data=result.split("\\*");
+            System.out.println(data);
+        }
+        else if(result.contains("/")){
+            String[] data=result.split("/");
+            System.out.println(data);
+        }
     }
 }

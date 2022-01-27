@@ -8,6 +8,9 @@ import java.util.List;
 
 public class Utils {
 
+    static Controller classWithValue = new Controller();
+    public static String numberAndOperation;
+
     public static boolean isOperator(String character) {
         return character.equals("-") || character.equals("+") || character.equals("*") || character.equals("/");
     }
@@ -40,6 +43,23 @@ public class Utils {
     }
 
     public static Pair<List<Double>, List<String>> getNumbersForCalculations(String calculations) {
+
+        numberAndOperation=classWithValue.getValueOfResult();//przypisanie wartości ze zmiennej result
+        List summaryValue = new ArrayList();//lista na wszystko
+
+
+        if (numberAndOperation.contains("+")){
+            System.out.println("zawiera+");
+        }
+        else if(numberAndOperation.contains("-")){
+            System.out.println("zawiera-");
+        }
+        else if(numberAndOperation.contains("*")){
+            System.out.println("zawiera*");
+        }
+        else if(numberAndOperation.contains("/")){
+            System.out.println("zawiera/");
+        }
 
         /* TODO
             Przykładowa funkcja, operacje są typu String, ale możesz utworzyć Enum

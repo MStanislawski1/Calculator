@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class Utils {
 
     private static String OPERATORS_REGEX = "[-+*/]";
-    private static String NUMBERS_REGEX = "\\d*\\.?\\d";
+    private static String NUMBERS_REGEX = "\\d+(\\.\\d+)?";
 
     public static boolean isOperator(String character) {
         return Pattern.matches(OPERATORS_REGEX, character);
@@ -40,27 +40,34 @@ public class Utils {
 
     public static Pair<List<Double>, List<String>> getNumbersForCalculations(String calculations) {
 
-        String positiveCalculations = calculations.substring(0, calculations.length()-1);
+        boolean startWithSecondIndex = false;
+        String positiveCalculations = calculations.substring(0, calculations.length() - 1);
         List<Double> numbers = new ArrayList<>();
-        List<String> numbersAndOperators = Arrays.asList(positiveCalculations.split(OPERATORS_REGEX));
+        List<String> operators = new ArrayList<>();
+        List<String> numbersAsStrings = Arrays.asList(positiveCalculations.split(OPERATORS_REGEX));
 
-        for (String numbersAndOperator : numbersAndOperators)
-            if (isNumber(numbersAndOperator))
-                numbers.add(Double.parseDouble(numbersAndOperator));
+        for (String number : numbersAsStrings)
+            if (isNumber(number))
+                numbers.add(Double.parseDouble(number));
 
-        /* TODO
-            tutaj przypisujemy minus z pierwszej pozycji do pierwszej cyfry, ale użytkownik może też wpisać minus po znaku
-            mnożenia lub dzielenia i jeżeli chcemy to wyświetlać tak jak teraz (bez żadnych nawiasów) to trzeba się
-            zastanowić jak przypisać do cyfr minusy ze środka równania i usunąć je z listy operatorów
-         */
-        if(numbersAndOperators.size()>0 && calculations.startsWith("-")) {
+        if (numbersAsStrings.size() > 0 && calculations.startsWith("-")) {
             numbers.set(0, numbers.get(0) * -1);
             positiveCalculations = positiveCalculations.substring(1);
         }
 
-        List<String> operators = Arrays.asList(positiveCalculations.split(NUMBERS_REGEX));
+        String[] operatorsTable = positiveCalculations.split(NUMBERS_REGEX);
 
-        return new Pair<>(numbers,operators);
+        for (int i = 0; i < operatorsTable.length; i++)
+            if (operatorsTable[i] != null && operatorsTable[i].length() > 0) {
+                if (operatorsTable[i].length() == 2) {
+                    if (startWithSecondIndex) numbers.set(i, numbers.get(i) * -1);
+                    else numbers.set(i + 1, numbers.get(i + 1) * -1);
+                    operatorsTable[i] = operatorsTable[i].substring(0, 1);
+                }
+                operators.add(operatorsTable[i]);
+            } else startWithSecondIndex = true;
+
+        return new Pair<>(numbers, operators);
     }
 
     private static boolean isDouble(String result) {

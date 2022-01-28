@@ -14,7 +14,7 @@ public class Utils {
     public static String numberAndOperation;
 
     private static String OPERATORS_REGEX = "[-+*/]";
-    private static String NUMBERS_REGEX = "\\d*\\.?\\d";
+    private static String NUMBERS_REGEX = "\\d+(\\.\\d+)?";
 
     public static boolean isOperator(String character) {
         return Pattern.matches(OPERATORS_REGEX, character);

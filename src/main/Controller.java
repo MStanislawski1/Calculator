@@ -8,6 +8,8 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static main.Utils.*;
 
@@ -228,7 +230,16 @@ public class Controller extends Calculations {
         else if (result.equals("-") || result.contains("/0"))
             result = "";
 
-        if (!result.contains("/0")) {
+        Matcher countDivideByZero = Pattern.compile("(/0)(?!/0\\.)").matcher(result);
+        Matcher countDivideByDouble = Pattern.compile("/0\\.").matcher(result);
+
+        int countZero = 0;
+        int countDouble = 0;
+        while (countDivideByZero.find()) countZero++;
+        while (countDivideByDouble.find()) countDouble++;
+
+
+        if (countZero == countDouble) {
             Pair data = getNumbersForCalculations(result);
 
            /* TODO

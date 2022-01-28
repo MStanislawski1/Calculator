@@ -4,7 +4,6 @@ import javafx.scene.control.Button;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -13,8 +12,8 @@ public class Utils {
     static Controller classWithValue = new Controller();
     public static String numberAndOperation;
 
-    private static String OPERATORS_REGEX = "[-+*/]";
-    private static String NUMBERS_REGEX = "\\d+(\\.\\d+)?";
+    private static final String OPERATORS_REGEX = "[-+*/]";
+    private static final String NUMBERS_REGEX = "\\d+(\\.\\d+)?";
 
     public static boolean isOperator(String character) {
         return Pattern.matches(OPERATORS_REGEX, character);

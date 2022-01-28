@@ -4,12 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static main.Utils.*;
 
@@ -223,47 +220,29 @@ public class Controller extends Calculations {
     }
 
     public void equalsButtonClick() {
-        if (!result.isBlank() && isNumber(result.substring(result.length() - 1)))
-            result = result + "=";
-        else if (replaceOperator(result) && result.length() > 1)
-            result = result.substring(0, result.length() - 1) + "=";
-        else if (result.equals("-") || result.contains("/0"))
+
+        if (result.equals("-")) {
             result = "";
-
-        Matcher countDivideByZero = Pattern.compile("(/0)(?!/0\\.)").matcher(result);
-        Matcher countDivideByDouble = Pattern.compile("/0\\.").matcher(result);
-
-        int countZero = 0;
-        int countDouble = 0;
-        while (countDivideByZero.find()) countZero++;
-        while (countDivideByDouble.find()) countDouble++;
-
-
-        if (countZero == countDouble) {
-            Pair data = getNumbersForCalculations(result);
-
-           /* TODO
-               wywołamy funkcję z klasy Calculations (do napisania), która pobierze te dwie listy
-               i na ich podstawie wyliczy wynik, który przypiszemy do zmiennej finalResult i wyświetlimy
-               finalResult = getResult(data);
-            */
-
-            calculationScreen.setText(result + finalResult);
-            resultScreen.setText(String.valueOf(finalResult));
+            calculationScreen.setText("");
         } else {
-            String errorMessage = "Nie można dzielić przez 0!";
-            resultScreen.setText(errorMessage);
-            result = "";
-            calculationScreen.setText(result);
-        }
+            finalResult = getResult(getNumbersForCalculations(result));
 
-        changeClickable(false, seven, eight, nine, multiplication, four, five, six, division, one, two, three, plus, separator, zero, equals, minus);
+            if (String.valueOf(finalResult).contains("Infinity") || String.valueOf(finalResult).contains("NaN")) {
+                resultScreen.setText("Nie można dzielić przez 0!");
+                calculationScreen.setText("");
+            } else {
+                calculationScreen.setText(result + " = " + finalResult);
+                resultScreen.setText(String.valueOf(finalResult));
+            }
+            changeClickable(false, seven, eight, nine, multiplication, four, five, six, division, one, two, three, plus, separator, zero, equals, minus);
+        }
     }
 
     public void clearButtonClick() {
 
         if (result.length() >= 1) {
-            result = result.substring(0, result.length() - 1);
+            if (!calculationScreen.getText().contains("="))
+                result = result.substring(0, result.length() - 1);
             calculationScreen.setText(result);
         }
 

@@ -41,7 +41,7 @@ public class Utils {
     public static Pair<List<Double>, List<String>> getNumbersForCalculations(String calculations) {
 
         boolean startWithSecondIndex = false;
-        String positiveCalculations = calculations.substring(0, calculations.length() - 1);
+        String positiveCalculations = calculations;
         List<Double> numbers = new ArrayList<>();
         List<String> operators = new ArrayList<>();
         List<String> numbersAsStrings = Arrays.asList(positiveCalculations.split(OPERATORS_REGEX));

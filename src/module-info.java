@@ -4,6 +4,7 @@ module Calculator {
     requires javafx.graphics;
     requires javafx.fxml;
     requires javafx.base;
+    requires org.junit.jupiter.api;
 
     opens main;
 }

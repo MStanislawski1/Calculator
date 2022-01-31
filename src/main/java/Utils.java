@@ -1,5 +1,3 @@
-package main;
-
 import javafx.scene.control.Button;
 import javafx.util.Pair;
 

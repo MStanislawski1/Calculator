@@ -1,11 +1,7 @@
-package main;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import static main.Utils.*;
 
 public class Controller extends Calculations {
 
@@ -172,34 +168,34 @@ public class Controller extends Calculations {
     }
 
     public void separatorButtonClick() {
-        if (!result.isBlank() && isNumber(result.substring(result.length() - 1))) {
+        if (!result.isBlank() && Utils.isNumber(result.substring(result.length() - 1))) {
             result = result + ".";
             calculationScreen.setText(result);
         }
     }
 
     public void multiplicationButtonClick() {
-        if (!result.isBlank() && isNumber(result.substring(result.length() - 1)) && !result.endsWith("."))
+        if (!result.isBlank() && Utils.isNumber(result.substring(result.length() - 1)) && !result.endsWith("."))
             result = result + "*";
-        else if (replaceOperator(result) && result.length() > 1)
+        else if (Utils.replaceOperator(result) && result.length() > 1)
             result = result.substring(0, result.length() - 1) + "*";
 
         calculationScreen.setText(result);
     }
 
     public void divisionButtonClick() {
-        if (!result.isBlank() && isNumber(result.substring(result.length() - 1)) && !result.endsWith("."))
+        if (!result.isBlank() && Utils.isNumber(result.substring(result.length() - 1)) && !result.endsWith("."))
             result = result + "/";
-        else if (replaceOperator(result) && result.length() > 1)
+        else if (Utils.replaceOperator(result) && result.length() > 1)
             result = result.substring(0, result.length() - 1) + "/";
 
         calculationScreen.setText(result);
     }
 
     public void plusButtonClick() {
-        if (!result.isBlank() && isNumber(result.substring(result.length() - 1)) && !result.endsWith("."))
+        if (!result.isBlank() && Utils.isNumber(result.substring(result.length() - 1)) && !result.endsWith("."))
             result = result + "+";
-        else if (replaceOperator(result) && result.length() > 1)
+        else if (Utils.replaceOperator(result) && result.length() > 1)
             result = result.substring(0, result.length() - 1) + "+";
 
         calculationScreen.setText(result);
@@ -220,7 +216,7 @@ public class Controller extends Calculations {
             result = "";
             calculationScreen.setText("");
         } else {
-            finalResult = getResult(getNumbersForCalculations(result));
+            finalResult = getResult(Utils.getNumbersForCalculations(result));
 
             if (String.valueOf(finalResult).contains("Infinity") || String.valueOf(finalResult).contains("NaN")) {
                 resultScreen.setText("Nie można dzielić przez 0!");
@@ -229,7 +225,7 @@ public class Controller extends Calculations {
                 calculationScreen.setText(result + " = " + finalResult);
                 resultScreen.setText(String.valueOf(finalResult));
             }
-            changeClickable(false, seven, eight, nine, multiplication, four, five, six, division, one, two, three, plus, separator, zero, equals, minus);
+            Utils.changeClickable(false, seven, eight, nine, multiplication, four, five, six, division, one, two, three, plus, separator, zero, equals, minus);
         }
     }
 
@@ -242,7 +238,7 @@ public class Controller extends Calculations {
         }
 
         resultScreen.setText("");
-        changeClickable(true, seven, eight, nine, multiplication, four, five, six, division, one, two, three, plus, separator, zero, equals, minus);
+        Utils.changeClickable(true, seven, eight, nine, multiplication, four, five, six, division, one, two, three, plus, separator, zero, equals, minus);
     }
 
     public void newButtonClicked() {
@@ -250,6 +246,6 @@ public class Controller extends Calculations {
         resultScreen.setText("");
         finalResult = 0.0;
         calculationScreen.setText("");
-        changeClickable(true, seven, eight, nine, multiplication, four, five, six, division, one, two, three, plus, separator, zero, equals, minus);
+        Utils.changeClickable(true, seven, eight, nine, multiplication, four, five, six, division, one, two, three, plus, separator, zero, equals, minus);
     }
 }

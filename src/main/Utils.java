@@ -70,6 +70,7 @@ public class Utils {
         return new Pair<>(numbers, operators);
     }
 
+    //umożliwia wpisanie zera po kropce np. 0.003
     private static boolean isDouble(String result) {
         boolean isDouble = false;
         if (result.endsWith("0")) {

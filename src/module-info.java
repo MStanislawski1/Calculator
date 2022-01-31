@@ -1,3 +1,4 @@
+
 module Calculator {
 
     requires javafx.controls;
@@ -5,6 +6,10 @@ module Calculator {
     requires javafx.fxml;
     requires javafx.base;
     requires org.junit.jupiter.api;
+//    requires java.logging;
+//    requires java.sql;
+
 
     opens main;
 }
+

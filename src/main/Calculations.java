@@ -4,7 +4,7 @@ import javafx.util.Pair;
 
 import java.util.List;
 
-public class Calculations {
+public class Calculations implements CalculationsInterface {
 
     public Double getResult(Pair<List<Double>, List<String>> operations) {
 

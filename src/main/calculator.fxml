@@ -138,6 +138,5 @@
                 <Insets bottom="15.0" left="10.0" right="10.0" top="10.0" />
             </GridPane.margin>
         </Button>
-      <Button fx:id="but" mnemonicParsing="false" onAction="#but" text="Button" GridPane.columnIndex="2" />
     </GridPane>
 </GridPane>
